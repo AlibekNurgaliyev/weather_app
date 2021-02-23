@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_weather_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".API.WeatherMainActivity"></activity>
+        <activity android:name=".WeatherMainActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
