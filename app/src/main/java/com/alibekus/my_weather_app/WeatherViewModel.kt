@@ -4,16 +4,17 @@ import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 
-class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() {
-    val storedWeather: LiveData<List<WeatherDB>> = repository.storedWeather.asLiveData()
+class WeatherViewModel(
+    private val repository: WeatherRepository
+) : ViewModel() {
+    val storedWeathers: LiveData<List<Weather>> = repository.storedWeather.asLiveData()
 
-    fun insert(weatherDB: WeatherDB) = viewModelScope.launch {
-        repository.insert(weatherDB)
+    fun insert(weather: Weather) = viewModelScope.launch {
+        repository.insert(weather)
     }
 }
 
-class WeatherViewModelFactory(private val repository: WeatherRepository) :
-    ViewModelProvider.Factory {
+class WeatherViewModelFactory(private val repository: WeatherRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(WeatherViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
@@ -22,3 +23,4 @@ class WeatherViewModelFactory(private val repository: WeatherRepository) :
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
+

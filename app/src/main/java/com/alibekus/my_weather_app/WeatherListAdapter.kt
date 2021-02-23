@@ -8,40 +8,40 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 class WeatherListAdapter :
-    androidx.recyclerview.widget.ListAdapter<WeatherDB, WordViewHolder>(WordComparator()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
-        return WordViewHolder.create(parent)
+    androidx.recyclerview.widget.ListAdapter<Weather, WeatherViewHolder>(ItemComparator()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
+        return WeatherViewHolder.create(parent)
     }
 
-    override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current.weather)
     }
 }
 
 
-class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val wordItemView: TextView = itemView.findViewById(R.id.textView)
+class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private val weatherItemView: TextView = itemView.findViewById(R.id.textView)
 
     fun bind(text: String?) {
-        wordItemView.text = text
+        weatherItemView.text = text
     }
 
     companion object {
-        fun create(parent: ViewGroup): WordViewHolder {
+        fun create(parent: ViewGroup): WeatherViewHolder {
             val view: View = LayoutInflater.from(parent.context)
                 .inflate(R.layout.recyclerview_item, parent, false)
-            return WordViewHolder(view)
+            return WeatherViewHolder(view)
         }
     }
 }
 
-class WordComparator : DiffUtil.ItemCallback<WeatherDB>() {
-    override fun areItemsTheSame(oldItem: WeatherDB, newItem: WeatherDB): Boolean {
+class ItemComparator : DiffUtil.ItemCallback<Weather>() {
+    override fun areItemsTheSame(oldItem: Weather, newItem: Weather): Boolean {
         return oldItem === newItem
     }
 
-    override fun areContentsTheSame(oldItem: WeatherDB, newItem: WeatherDB): Boolean {
+    override fun areContentsTheSame(oldItem: Weather, newItem: Weather): Boolean {
         return oldItem.weather == newItem.weather
     }
 }

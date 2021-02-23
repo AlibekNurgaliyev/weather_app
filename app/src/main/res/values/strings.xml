@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My_weather_app</string>
+<!--    <string name="hint_word">Word..</string>-->
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Not saved</string>
+    <string name="add_city_weather_to_database">Add city</string>
 </resources>
