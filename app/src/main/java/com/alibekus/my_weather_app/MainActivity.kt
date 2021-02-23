@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         val service = retrofit.create(WeatherService::class.java)
-        val call = service.getCurrentWeatherData(lat, lon, AppId)
-
+//        val call = service.getCurrentWeatherData(lat, lon, AppId)
+        val call = service.getCurrentWeatherData(city_id, AppId)
         call.enqueue(object : Callback<WeatherResponse> {
             override fun onResponse(
                 call: Call<WeatherResponse>,
@@ -73,7 +73,8 @@ class MainActivity : AppCompatActivity() {
     companion object {
         var BaseUrl = "http://api.openweathermap.org/"
         var AppId = "2e65127e909e178d0af311a81f39948c"
-        var lat = "35"
-        var lon = "139"
+        var city_id = "1526384"
+//        var lat = "51.5074"
+//        var lon = "0.1278"
     }
 }

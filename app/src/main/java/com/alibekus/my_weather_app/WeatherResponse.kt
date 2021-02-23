@@ -3,6 +3,9 @@ package com.alibekus.my_weather_app
 import com.google.gson.annotations.SerializedName
 
 class WeatherResponse {
+    @SerializedName("city_id")
+    var city_id: CityId? = null
+
     @SerializedName("coord")
     var coord: Coord? = null
 
@@ -97,6 +100,10 @@ class Sys {
 
     @SerializedName("sunset")
     var sunset: Long? = 0
+}
+class CityId{
+    @SerializedName("id")
+    var id: Int? = null
 }
 
 class Coord {
