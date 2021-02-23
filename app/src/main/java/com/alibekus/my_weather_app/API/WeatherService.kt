@@ -1,5 +1,6 @@
-package com.alibekus.my_weather_app
+package com.alibekus.my_weather_app.API
 
+import com.alibekus.my_weather_app.API.WeatherResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

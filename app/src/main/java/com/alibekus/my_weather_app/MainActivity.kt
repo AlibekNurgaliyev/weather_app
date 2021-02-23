@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.alibekus.my_weather_app.API.WeatherResponse
+import com.alibekus.my_weather_app.API.WeatherService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.util.*
 
 private var weatherData: TextView? = null
 
@@ -41,6 +45,13 @@ class MainActivity : AppCompatActivity() {
             ) {
                 if (response.code() == 200) {
                     val weatherResponse = response.body()!!
+                    //val currentDateTime = LocalDateTime.now()
+                    var simpleDateFormat :SimpleDateFormat
+                    var date : String
+                    var calendar : Calendar
+                    calendar = Calendar.getInstance()
+                    simpleDateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+                    date = simpleDateFormat.format(calendar.time)
                     val stringBuilder = "Country: " +
                             weatherResponse.sys!!.country +
                             "\n" +
@@ -57,7 +68,9 @@ class MainActivity : AppCompatActivity() {
                             weatherResponse.main!!.humidity +
                             "\n" +
                             "Pressure: " +
-                            weatherResponse.main!!.pressure
+                            weatherResponse.main!!.pressure+
+                            "\n" +
+                            date
 
                     weatherData!!.text = stringBuilder
                 }

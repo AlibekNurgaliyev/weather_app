@@ -1,4 +1,4 @@
-package com.alibekus.my_weather_app
+package com.alibekus.my_weather_app.API
 
 import com.google.gson.annotations.SerializedName
 
