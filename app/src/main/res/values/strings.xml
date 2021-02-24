@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string name="app_name">My_weather_app</string>
+    <string name="app_name">Weather app</string>
     <string name="recycler_view_item">Temperature<br> Humidity</br></string>
     <string name="city_choose">Choose your city</string>
     <string name="not_saved">Not saved</string>
