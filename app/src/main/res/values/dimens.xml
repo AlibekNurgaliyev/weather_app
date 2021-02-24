@@ -28,6 +28,7 @@
 
     <!--    layout params-->
     <dimen name="activity_weather_main_logo_height">100dp</dimen>
+    <dimen name="activity_cities_imagebutton_width">140dp</dimen>
 
     <!--    Button-->
 

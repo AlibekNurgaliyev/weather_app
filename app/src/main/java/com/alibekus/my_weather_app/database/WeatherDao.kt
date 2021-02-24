@@ -1,4 +1,4 @@
-package com.alibekus.my_weather_app
+package com.alibekus.my_weather_app.database
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -13,7 +13,7 @@ interface WeatherDao {
     fun getStoredWeather(): Flow<List<Weather>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(weather:Weather)
+    suspend fun insert(weather: Weather)
 
     @Query("DELETE FROM weather_table")
     suspend fun deleteAll()

@@ -2,13 +2,18 @@ package com.alibekus.my_weather_app
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.alibekus.my_weather_app.database.Weather
+import com.alibekus.my_weather_app.database.WeatherApplication
+import com.alibekus.my_weather_app.viewModel.WeatherListAdapter
+import com.alibekus.my_weather_app.viewModel.WeatherViewModel
+import com.alibekus.my_weather_app.viewModel.WeatherViewModelFactory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class WeatherMainActivity : AppCompatActivity() {
@@ -48,7 +53,7 @@ class WeatherMainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(
                 applicationContext,
-                R.string.empty_not_saved,
+                R.string.not_saved,
                 Toast.LENGTH_LONG
             ).show()
         }

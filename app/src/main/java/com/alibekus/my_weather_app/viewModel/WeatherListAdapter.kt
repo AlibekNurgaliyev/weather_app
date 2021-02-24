@@ -1,4 +1,4 @@
-package com.alibekus.my_weather_app
+package com.alibekus.my_weather_app.viewModel
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.alibekus.my_weather_app.R
+import com.alibekus.my_weather_app.database.Weather
 
 class WeatherListAdapter :
     androidx.recyclerview.widget.ListAdapter<Weather, WeatherViewHolder>(ItemComparator()) {
@@ -18,7 +20,6 @@ class WeatherListAdapter :
         holder.bind(current.weather)
     }
 }
-
 
 class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val weatherItemView: TextView = itemView.findViewById(R.id.textView)

@@ -12,6 +12,6 @@
     <color name="recyclerview_item_text">#656464</color>
     <color name="buttonLabel">#FFFFFFFF</color>
     <color name="activity_bg">#EFDAD2</color>
-
+    <color name="text_city_choose">#656464</color>
     <color name="fab">#A39B99</color>
 </resources>

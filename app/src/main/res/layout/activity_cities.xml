@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/activity_bg"
     android:orientation="vertical"
-    tools:context=".CitiesActivity"
-    android:background="@color/activity_bg">
+    tools:context=".CitiesActivity">
 
-    <Button
+    <TextView
         android:id="@+id/button_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_spacing_16x"
-        android:background="@color/teal_200"
-        android:text="@string/button_save"
-        android:textColor="@color/white" />
+        android:layout_margin="@dimen/layout_spacing_8x"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="@string/city_choose"
+        android:textColor="@color/text_city_choose"
+        android:textSize="@dimen/text_size_24x"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/activity_cities_almaty"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_cities_imagebutton_width"
+            android:layout_marginStart="@dimen/layout_spacing_8x"
+            android:layout_marginEnd="@dimen/layout_spacing_8x"
+            android:layout_marginBottom="@dimen/layout_spacing_8x"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/almaty" />
+    </LinearLayout>
 </LinearLayout>

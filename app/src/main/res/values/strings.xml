@@ -2,9 +2,7 @@
 
 <resources>
     <string name="app_name">My_weather_app</string>
-<!--    <string name="hint_word">Word..</string>-->
-    <string name="recycler_view_item">Temperature<br> sas</br></string>
-    <string name="button_save">Save</string>
-    <string name="empty_not_saved">Not saved</string>
-    <string name="add_city_weather_to_database">Add city</string>
+    <string name="recycler_view_item">Temperature<br> Humidity</br></string>
+    <string name="city_choose">Choose your city</string>
+    <string name="not_saved">Not saved</string>
 </resources>

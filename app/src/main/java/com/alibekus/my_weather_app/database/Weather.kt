@@ -1,4 +1,4 @@
-package com.alibekus.my_weather_app
+package com.alibekus.my_weather_app.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

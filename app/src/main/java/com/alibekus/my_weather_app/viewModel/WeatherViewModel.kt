@@ -1,8 +1,9 @@
-package com.alibekus.my_weather_app
+package com.alibekus.my_weather_app.viewModel
 
 import androidx.lifecycle.*
+import com.alibekus.my_weather_app.database.Weather
+import com.alibekus.my_weather_app.repository.WeatherRepository
 import kotlinx.coroutines.launch
-import java.lang.IllegalArgumentException
 
 class WeatherViewModel(
     private val repository: WeatherRepository
@@ -14,7 +15,8 @@ class WeatherViewModel(
     }
 }
 
-class WeatherViewModelFactory(private val repository: WeatherRepository) : ViewModelProvider.Factory {
+class WeatherViewModelFactory(private val repository: WeatherRepository) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(WeatherViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

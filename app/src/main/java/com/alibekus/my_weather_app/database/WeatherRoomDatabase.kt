@@ -1,4 +1,4 @@
-package com.alibekus.my_weather_app
+package com.alibekus.my_weather_app.database
 
 import android.content.Context
 import androidx.room.Database
@@ -14,20 +14,21 @@ abstract class WeatherRoomDatabase : RoomDatabase() {
 
     private class WeatherDatabaseCallback(
         private val scope: CoroutineScope
-    ):RoomDatabase.Callback(){
+    ) : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
-            INSTANCE?.let{database ->
+            INSTANCE?.let { database ->
                 scope.launch {
                     populateDatabase(database.weatherdDao())
                 }
             }
         }
-        suspend fun populateDatabase(weatherDao: WeatherDao){
+
+        suspend fun populateDatabase(weatherDao: WeatherDao) {
             weatherDao.deleteAll()
 
             var weather = Weather("Hello")
-            weatherDao.insert( weather)
+            weatherDao.insert(weather)
             weather = Weather("Alibekus!")
             weatherDao.insert(weather)
         }
