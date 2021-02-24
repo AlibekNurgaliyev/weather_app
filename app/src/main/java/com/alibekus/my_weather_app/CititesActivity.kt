@@ -5,10 +5,7 @@ import android.content.Intent
 
 import android.os.Build
 import android.os.Bundle
-import android.text.TextUtils
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.alibekus.my_weather_app.API.WeatherResponse
@@ -20,6 +17,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.roundToInt
 
 private var weatherData: String? = null
 
@@ -32,12 +30,12 @@ class CitiesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cities)
-
+        getCurrentWeatherData()
 
         val button = findViewById<Button>(R.id.button_save)
         button.setOnClickListener {
             val replyIntent = Intent()
-            getCurrentWeatherData()
+            //getCurrentWeatherData()
 
             replyIntent.putExtra(EXTRA_REPLY, weatherData)
             setResult(Activity.RESULT_OK, replyIntent)
@@ -46,6 +44,10 @@ class CitiesActivity : AppCompatActivity() {
     }
 
     internal fun getCurrentWeatherData() {
+        var calendar: Calendar = Calendar.getInstance()
+        var simpleDateFormat: SimpleDateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+        var date: String = simpleDateFormat.format(calendar.time)
+
         val retrofit = Retrofit.Builder()
             .baseUrl(BaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
@@ -61,32 +63,23 @@ class CitiesActivity : AppCompatActivity() {
                 response: Response<WeatherResponse>
             ) {
                 if (response.code() == 200) {
-                    var simpleDateFormat : SimpleDateFormat
-                    var date : String
-                    var calendar : Calendar
-                    calendar = Calendar.getInstance()
-                    simpleDateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
-                    date = simpleDateFormat.format(calendar.time)
+
                     val weatherResponse = response.body()!!
-                    val stringBuilder = "Country: " +
-                            weatherResponse.sys!!.country +
-                            "\n" +
-                            "Temperature: " +
-                            weatherResponse.main!!.temp +
-                            "\n" +
-                            "Temperature(Min): " +
-                            weatherResponse.main!!.temp_min +
-                            "\n" +
-                            "Temperature(Max): " +
-                            weatherResponse.main!!.temp_max +
-                            "\n" +
-                            "Humidity: " +
-                            weatherResponse.main!!.humidity +
-                            "\n" +
-                            "Pressure: " +
-                            weatherResponse.main!!.pressure+
-                            "\n" +
-                            date
+                    val stringBuilder =
+                        "Country: " +
+                                weatherResponse.sys!!.country + "\n" +
+                                "City: " +
+                                weatherResponse.name + "\n" +
+                                "Temperature: %.1f".format(convertToCelsius(weatherResponse.main!!.temp)) + "\n" +
+                                "Feels like: %.1f".format(convertToCelsius(weatherResponse.main!!.feels_like)) + "\n" +
+                                "Wind speed: " +
+                                weatherResponse.wind!!.speed + " m/s" + "\n" +
+                                "Humidity: " +
+                                weatherResponse.main!!.humidity + "\n" +
+                                "Pressure: " +
+                                weatherResponse.main!!.pressure + "\n" +
+                                "Date: " +
+                                date
 
                     weatherData = stringBuilder
                 }
@@ -98,7 +91,9 @@ class CitiesActivity : AppCompatActivity() {
         })
     }
 
-
+    fun convertToCelsius(temperature: Float?): Float {
+        return (temperature!! - 273)
+    }
 
     companion object {
         var BaseUrl = "http://api.openweathermap.org/"

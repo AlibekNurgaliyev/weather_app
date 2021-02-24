@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.My_weather_app" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.My_weather_app" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -13,10 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="weather_title">
-        <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:paddingLeft">8dp</item>
-        <item name="background">@android:color/holo_orange_light</item>
-        <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
-    </style>
+<!--    <style name="weather_title">-->
+<!--        <item name="android:layout_marginBottom">8dp</item>-->
+<!--        <item name="android:paddingLeft">8dp</item>-->
+<!--        <item name="background">@android:color/holo_orange_light</item>-->
+<!--        <item name="android:textAppearance">@android:style/TextAppearance.Large</item>-->
+<!--    </style>-->
 </resources>

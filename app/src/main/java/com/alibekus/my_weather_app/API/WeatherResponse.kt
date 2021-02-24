@@ -3,8 +3,6 @@ package com.alibekus.my_weather_app.API
 import com.google.gson.annotations.SerializedName
 
 class WeatherResponse {
-    @SerializedName("city_id")
-    var city_id: CityId? = null
 
     @SerializedName("coord")
     var coord: Coord? = null
@@ -89,6 +87,9 @@ class Main {
 
     @SerializedName("temp_max")
     var temp_max: Float? = 0.toFloat()
+
+    @SerializedName("feels_like")
+    var feels_like: Float? = 0.toFloat()
 }
 
 class Sys {
@@ -101,10 +102,7 @@ class Sys {
     @SerializedName("sunset")
     var sunset: Long? = 0
 }
-class CityId{
-    @SerializedName("id")
-    var id: Int? = null
-}
+
 
 class Coord {
 

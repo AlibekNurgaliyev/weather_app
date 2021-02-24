@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainActivity : AppCompatActivity() {
+class WeatherMainActivity : AppCompatActivity() {
 
     private val newWeatherActivityRequestCode = 1
     private val weatherViewModel: WeatherViewModel by viewModels {
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            val intent = Intent(this@MainActivity, CitiesActivity::class.java)
+            val intent = Intent(this@WeatherMainActivity, CitiesActivity::class.java)
             startActivityForResult(intent, newWeatherActivityRequestCode)
         }
     }

@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CitiesActivity">
+    tools:context=".CitiesActivity"
+    android:background="@color/activity_bg">
 
     <Button
         android:id="@+id/button_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/big_padding"
-        android:background="@color/white"
+        android:layout_margin="@dimen/layout_spacing_16x"
+        android:background="@color/teal_200"
         android:text="@string/button_save"
-        android:textColor="@color/buttonLabel" />
+        android:textColor="@color/white" />
 </LinearLayout>
